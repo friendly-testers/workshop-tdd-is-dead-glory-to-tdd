@@ -1,0 +1,4 @@
+legacyAlgorithms
+node_modules
+dist
+.eslintrc.cjs
