@@ -32,16 +32,6 @@ module.exports = {
     moduleFileExtensions: ['js', 'json', 'ts'],
     clearMocks: true,
     setupFilesAfterEnv: ['./jest.setup.ts'],
-    reporters: [
-        'default',
-        [
-            'jest-sonar',
-            {
-                outputDirectory: './',
-                outputName: 'test-report.xml',
-            },
-        ],
-    ],
     testPathIgnorePatterns: ['/test/'],
     modulePaths: [compilerOptions.baseUrl],
     moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/' }),
