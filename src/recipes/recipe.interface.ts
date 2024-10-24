@@ -1,9 +1,9 @@
-import { Item } from "../items/item";
+import { Ingredient } from "../ingredients/ingredient";
 
 
 
 export interface IRecipe {
-    readonly necessaryItems: number;
-    successCondition(items: Item[]): boolean;
-    explodingCondition: (items: Item[]) => void;
+    readonly necessaryIngredients: number;
+    successCondition(ingredients: Ingredient[]): boolean;
+    explodingCondition: (ingredients: Ingredient[]) => void;
 }

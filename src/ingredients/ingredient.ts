@@ -1,5 +1,5 @@
 
-export enum Item {
+export enum Ingredient {
     WATER = "WATER",
     FIRE = "FIRE",
     EARTH = "EARTH",

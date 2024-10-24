@@ -1,43 +1,43 @@
-import { Item } from "../items/item";
+import { Ingredient } from "../ingredients/ingredient";
 import { LongLifeRecipe } from "./long-life-recipe";
 
 describe(LongLifeRecipe.name, () => {
     let recipe: LongLifeRecipe;
 
     beforeEach(() => {
-        const expectedNumberNecessaryItems = 5;
-        recipe = new LongLifeRecipe(expectedNumberNecessaryItems);
+        const expectedNumberNecessaryIngredients = 5;
+        recipe = new LongLifeRecipe(expectedNumberNecessaryIngredients);
     })
 
-    it('should set the necessaryItems on constructor', () => {
-        const expectedNumberNecessaryItems = 5;
-        recipe = new LongLifeRecipe(expectedNumberNecessaryItems);
+    it('should set the necessaryIngredients on constructor', () => {
+        const expectedNumberNecessaryIngredients = 5;
+        recipe = new LongLifeRecipe(expectedNumberNecessaryIngredients);
 
-        expect(recipe.necessaryItems).toBe(expectedNumberNecessaryItems)
+        expect(recipe.necessaryIngredients).toBe(expectedNumberNecessaryIngredients)
     })
 
     describe('successCondition', () => {
-        it.each<{items: Item[]}>([
-            {items: [Item.AIR, Item.FIRE, Item.WATER, Item.WATER, Item.WATER]},
-            {items: [Item.FIRE, Item.FIRE, Item.WATER, Item.FIRE, Item.ETHER]}
-        ])('should return true if the number of items is equal to necessary items and there are at least 3 different items', ({items}) => {
-            const result = recipe.successCondition(items);
+        it.each<{ingredients: Ingredient[]}>([
+            {ingredients: [Ingredient.AIR, Ingredient.FIRE, Ingredient.WATER, Ingredient.WATER, Ingredient.WATER]},
+            {ingredients: [Ingredient.FIRE, Ingredient.FIRE, Ingredient.WATER, Ingredient.FIRE, Ingredient.ETHER]}
+        ])('should return true if the number of ingredients is equal to necessary ingredients and there are at least 3 different ingredients', ({ingredients}) => {
+            const result = recipe.successCondition(ingredients);
     
             expect(result).toBe(true)
         })
         it.each([
-            { items: [Item.AIR, Item.FIRE, Item.WATER, Item.WATER] },
-            { items: [Item.FIRE, Item.FIRE, Item.WATER, Item.FIRE, Item.ETHER, Item.ETHER] }
-        ])("should return false if the number of items is not equal to necessary items", ({ items }) => {
-            const result = recipe.successCondition(items);
+            { ingredients: [Ingredient.AIR, Ingredient.FIRE, Ingredient.WATER, Ingredient.WATER] },
+            { ingredients: [Ingredient.FIRE, Ingredient.FIRE, Ingredient.WATER, Ingredient.FIRE, Ingredient.ETHER, Ingredient.ETHER] }
+        ])("should return false if the number of ingredients is not equal to necessary ingredients", ({ ingredients }) => {
+            const result = recipe.successCondition(ingredients);
     
             expect(result).toBe(false)
         })
         it.each([
-            { items: [Item.AIR, Item.AIR, Item.WATER, Item.WATER, Item.WATER] },
-            { items: [Item.EARTH, Item.FIRE, Item.FIRE, Item.FIRE, Item.FIRE] }
-        ])("should return false if less than 3 different items are present", ({ items }) => {
-            const result = recipe.successCondition(items);
+            { ingredients: [Ingredient.AIR, Ingredient.AIR, Ingredient.WATER, Ingredient.WATER, Ingredient.WATER] },
+            { ingredients: [Ingredient.EARTH, Ingredient.FIRE, Ingredient.FIRE, Ingredient.FIRE, Ingredient.FIRE] }
+        ])("should return false if less than 3 different ingredients are present", ({ ingredients }) => {
+            const result = recipe.successCondition(ingredients);
     
             expect(result).toBe(false)
         })
@@ -46,15 +46,15 @@ describe(LongLifeRecipe.name, () => {
     describe('explodingCondition', () => {
         it.each(
             [
-                { items: [Item.AIR, Item.AIR, Item.AIR, Item.AIR, Item.AIR] },
-                { items: [Item.FIRE, Item.FIRE, Item.FIRE, Item.FIRE, Item.FIRE] },
-                { items: [Item.WATER, Item.WATER, Item.WATER, Item.WATER, Item.WATER] },
-                { items: [Item.EARTH, Item.EARTH, Item.EARTH, Item.EARTH, Item.EARTH] },
-                { items: [Item.ETHER, Item.ETHER, Item.ETHER, Item.ETHER, Item.ETHER] }
+                { ingredients: [Ingredient.AIR, Ingredient.AIR, Ingredient.AIR, Ingredient.AIR, Ingredient.AIR] },
+                { ingredients: [Ingredient.FIRE, Ingredient.FIRE, Ingredient.FIRE, Ingredient.FIRE, Ingredient.FIRE] },
+                { ingredients: [Ingredient.WATER, Ingredient.WATER, Ingredient.WATER, Ingredient.WATER, Ingredient.WATER] },
+                { ingredients: [Ingredient.EARTH, Ingredient.EARTH, Ingredient.EARTH, Ingredient.EARTH, Ingredient.EARTH] },
+                { ingredients: [Ingredient.ETHER, Ingredient.ETHER, Ingredient.ETHER, Ingredient.ETHER, Ingredient.ETHER] }
             ]
-        )("should throw an error if all the items are the same", ({items}) => {
+        )("should throw an error if all the ingredients are the same", ({ingredients}) => {
 
-            expect(() => recipe.explodingCondition(items)).toThrowWithMessage(Error, "BOOM!");
+            expect(() => recipe.explodingCondition(ingredients)).toThrowWithMessage(Error, "BOOM!");
         })
      })
 

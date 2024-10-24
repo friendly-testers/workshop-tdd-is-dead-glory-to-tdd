@@ -1,8 +1,8 @@
-import { Item } from "../items/item";
+import { Ingredient } from "../ingredients/ingredient";
 import { IRecipe } from "../recipes/recipe.interface";
 
 export interface IPotion {
     recipe: IRecipe;
-    items: Item[];
+    ingredients: Ingredient[];
     craft: () => boolean | null;
 }
