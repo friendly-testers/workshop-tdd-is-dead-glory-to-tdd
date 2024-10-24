@@ -1,16 +1,17 @@
 import { Item } from "../items/item";
+import { LongLifeRecipe } from "./long-life-recipe";
 
-describe("Recipe", () => {
-    let recipe: RecipeOne;
+describe(LongLifeRecipe.name, () => {
+    let recipe: LongLifeRecipe;
 
     beforeEach(() => {
         const expectedNumberNecessaryItems = 5;
-        recipe = new RecipeOne(expectedNumberNecessaryItems);
+        recipe = new LongLifeRecipe(expectedNumberNecessaryItems);
     })
 
     it('should set the necessaryItems on constructor', () => {
         const expectedNumberNecessaryItems = 5;
-        recipe = new RecipeOne(expectedNumberNecessaryItems);
+        recipe = new LongLifeRecipe(expectedNumberNecessaryItems);
 
         expect(recipe.necessaryItems).toBe(expectedNumberNecessaryItems)
     })
@@ -60,46 +61,7 @@ describe("Recipe", () => {
 })
 
 
-export interface IRecipe {
-    readonly necessaryItems: number;
-    successCondition(items: Item[]): boolean;
-    explodingCondition: (items: Item[]) => void;
-}
-
-
-export interface IPotion {
-    recipe: IRecipe;
-    items: Item[];
-    craft: () => boolean | null;
-}
-
 export interface IPotionMixer {
 
 }
 
-export class RecipeOne implements IRecipe {
-    readonly necessaryItems: number;
-    private readonly itemsToBeEquals = 3;
-
-    constructor(necessaryItems: number) {
-        this.necessaryItems = necessaryItems;
-    }
-
-    public explodingCondition(items: Item[]) {
-        const set = new Set(items);
-
-        if(set.size === 1) {
-            throw new Error('BOOM!');
-        }
-    }
-
-    public successCondition(items: Item[]): boolean {
-        const setMap = new Set(items);
-        
-        if(items.length === this.necessaryItems && setMap.size >= this.itemsToBeEquals) {
-            return true;
-        } else {
-            return false;
-        }
-    };
-}
