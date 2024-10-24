@@ -1,3 +1,4 @@
+import { ExplosionError } from "../errors/explosion.error";
 import { Ingredient } from "../ingredients/ingredient";
 import { LongLifeRecipe } from "./long-life-recipe";
 
@@ -54,7 +55,7 @@ describe(LongLifeRecipe.name, () => {
             ]
         )("should throw an error if all the ingredients are the same", ({ingredients}) => {
 
-            expect(() => recipe.explodingCondition(ingredients)).toThrowWithMessage(Error, "BOOM!");
+            expect(() => recipe.explodingCondition(ingredients)).toThrow(ExplosionError);
         })
      })
 

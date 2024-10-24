@@ -1,3 +1,4 @@
+import { ExplosionError } from "../errors/explosion.error";
 import { Ingredient } from "../ingredients/ingredient";
 import { IRecipe } from "./recipe.interface";
 
@@ -14,7 +15,7 @@ export class LongLifeRecipe implements IRecipe {
         const set = new Set(ingredients);
 
         if (set.size === 1) {
-            throw new Error('BOOM!');
+            throw new ExplosionError();
         }
     }
 
