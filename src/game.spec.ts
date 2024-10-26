@@ -4,6 +4,7 @@ import { Game } from "./game";
 import { PotionMixer } from "./mixer/potion-mixer";
 import { IPotionMixer } from "./mixer/potion-mixer.interface";
 import { IRecipe } from "./recipes/recipe.interface";
+import { NEW_ATTEMPT_MESSAGE } from "./utils";
 import { logger } from "./utils/logger";
 
 
@@ -83,7 +84,7 @@ describe('Game', () => {
 
         game.start()
 
-        expect(logger.info).toHaveBeenCalledWith('\nNew attempt...')
+        expect(logger.info).toHaveBeenCalledWith(NEW_ATTEMPT_MESSAGE)
     })
 })
 

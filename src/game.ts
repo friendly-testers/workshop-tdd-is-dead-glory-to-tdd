@@ -1,6 +1,7 @@
 import { Config } from "./config";
 import { GameOverError } from "./errors/game-over.error";
 import { IPotionMixer } from "./mixer/potion-mixer.interface";
+import { NEW_ATTEMPT_MESSAGE } from "./utils";
 import { logger } from "./utils/logger";
 
 export class Game {
@@ -17,7 +18,7 @@ export class Game {
                     logger.info(victoryMessage);
                     return;
                 }
-                logger.info(`\nNew attempt...`)
+                logger.info(NEW_ATTEMPT_MESSAGE)
             }
             logger.info(failureMessage);
         } catch (error) {

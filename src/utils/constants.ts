@@ -1,0 +1,1 @@
+export const NEW_ATTEMPT_MESSAGE = "----- New attempt -----";
