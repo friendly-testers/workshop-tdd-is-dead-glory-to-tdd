@@ -5,7 +5,7 @@ import { IRecipe } from "./recipe.interface";
 
 export class LongLifeRecipe implements IRecipe {
     readonly necessaryIngredients: number;
-    private readonly ingredientsToBeEquals = 3;
+    private readonly ingredientsToBeEquals = 4;
 
     constructor(necessaryIngredients: number) {
         this.necessaryIngredients = necessaryIngredients;

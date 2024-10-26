@@ -19,9 +19,9 @@ describe(LongLifeRecipe.name, () => {
 
     describe('successCondition', () => {
         it.each<{ingredients: Ingredient[]}>([
-            {ingredients: [Ingredient.AIR, Ingredient.FIRE, Ingredient.WATER, Ingredient.WATER, Ingredient.WATER]},
-            {ingredients: [Ingredient.FIRE, Ingredient.FIRE, Ingredient.WATER, Ingredient.FIRE, Ingredient.ETHER]}
-        ])('should return true if the number of ingredients is equal to necessary ingredients and there are at least 3 different ingredients', ({ingredients}) => {
+            {ingredients: [Ingredient.AIR, Ingredient.FIRE, Ingredient.WATER, Ingredient.ETHER, Ingredient.WATER]},
+            {ingredients: [Ingredient.EARTH, Ingredient.FIRE, Ingredient.WATER, Ingredient.FIRE, Ingredient.ETHER]}
+        ])('should return true if the number of ingredients is equal to necessary ingredients and there are at least 4 different ingredients', ({ingredients}) => {
             const result = recipe.successCondition(ingredients);
     
             expect(result).toBe(true)
@@ -37,7 +37,7 @@ describe(LongLifeRecipe.name, () => {
         it.each([
             { ingredients: [Ingredient.AIR, Ingredient.AIR, Ingredient.WATER, Ingredient.WATER, Ingredient.WATER] },
             { ingredients: [Ingredient.EARTH, Ingredient.FIRE, Ingredient.FIRE, Ingredient.FIRE, Ingredient.FIRE] }
-        ])("should return false if less than 3 different ingredients are present", ({ ingredients }) => {
+        ])("should return false if less than 4 different ingredients are present", ({ ingredients }) => {
             const result = recipe.successCondition(ingredients);
     
             expect(result).toBe(false)
@@ -62,7 +62,4 @@ describe(LongLifeRecipe.name, () => {
 })
 
 
-export interface IPotionMixer {
-
-}
 
