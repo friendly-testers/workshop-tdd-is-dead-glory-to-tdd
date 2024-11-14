@@ -12,6 +12,3 @@ Esploreremo questa metodologia sviluppando insieme in Typescript e Node.js un so
 
 Bonus: L’utente ha 3 ampolle(tentativi), un successo basta per vincere.
 
-
-## Move to main:
- - jest.config.js -> remove sonar config
