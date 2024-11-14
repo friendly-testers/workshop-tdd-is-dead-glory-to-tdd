@@ -2,22 +2,22 @@ import { Ingredient } from '../ingredients/ingredient';
 import { IRecipe } from './recipe.interface';
 
 /**
- * Long life recipe conditions:
+ * Invisibility recipe conditions:
  *
  * Success condition:
  * - must have number of ingredients equals to necessaryIngredients
- * - must have at least 4 different ingredients
+ * - must have at least one AIR and one WATER ingredient
  *
  * Exploding condition:
- * - all ingredients are equals
+ * - all ingredients are different
  */
-export class LongLifeRecipe implements IRecipe {
+export class InvisibilityRecipe implements IRecipe {
     readonly necessaryIngredients: number;
-    private readonly ingredientsToBeEquals = 4;
 
     constructor(necessaryIngredients: number) {
         this.necessaryIngredients = necessaryIngredients;
     }
+
     successCondition(ingredients: Ingredient[]): boolean {
         throw new Error('Method not implemented.');
     }
